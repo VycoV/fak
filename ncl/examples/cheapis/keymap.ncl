@@ -21,6 +21,15 @@ let cu = {
   SCSH = tap.reg.mod.lgui & tap.reg.mod.lsft & kc.S,
 } in
 
+# 1 tap = play/pause. 2 taps = next track. 3 taps = prev track.
+let my_playback_tap_dance = td.make 200 [
+  me.PLAY,
+  me.NEXT,
+  me.PREV,
+  # Reminder: These can be hold-taps for more complex behavior.
+  # These can even be tap dances... for nested tap dances... but uh... why though?
+] in
+
 # The following keycode is a hold-tap, since it has a tap and a hold portion
 # Important: All hold-taps need to have a behavior bound with `hold.reg.behavior`
 
@@ -41,13 +50,13 @@ in
     combo.make 42 [0, 1],
 
     # Combo activated by the third, fourth, and fifth physical keys
-    combo.make 69 [2, 3, 4],
+    combo.make 69 [2, 3],
   ],
 
   layers = [
     [ # Layer 0
       cu.COPY, cu.PSTE, 
-      cu.CUT,  cu.":P",
+      cu.CUT, cu.":P",
 
       # Combos start here in the same order we defined them above
       hold.reg.layer 1,

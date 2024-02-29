@@ -2,10 +2,9 @@ let { MatrixKey, .. } = import "../../fak/keyboard.ncl" in
 let { CH552E, .. } = import "../../fak/mcus.ncl" in
 
 {
-	Mcu = CH552E,
-		# the pin matrix is 2x2
+	mcu = CH552E,
   matrix = {
-		cols = [14, 17]
+		cols = [14, 17],
 		rows = [15, 16]
 	},
 	usb_dev = {
@@ -16,7 +15,7 @@ let { CH552E, .. } = import "../../fak/mcus.ncl" in
 	keys =
 		let M = MatrixKey in
 		[ 
-		  M 0 0, M 0 2,
-		  M 0 1, M 0 3,
+		    M 0 0, M 0 1,
+		     M 1 0, M 1 1,
 		]
 }
